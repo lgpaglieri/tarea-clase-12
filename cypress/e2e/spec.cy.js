@@ -1,14 +1,12 @@
 ///<reference types="Cypress" />
-
-const URL = "http://192.168.0.121:8080/";
+const URL = "http://192.168.0.174:8080/";
 
 context("Casa de cambio", () => {
   beforeEach(() => {
     cy.visit(URL);
   });
 
-  it("Revisa que luego de 1 segundo de cargada la pagina se muestre mas de una opción en moneda base", () => {
-    cy.wait(1000);
+  it("Revisa que luego de cargada la pagina se muestre mas de una opción en moneda base", () => {
     cy.get("#divisa-base").find("option").should("not.have.length", 1);
   });
 
@@ -17,6 +15,7 @@ context("Casa de cambio", () => {
     cy.get("#divisa-base").should("have.class", "is-invalid");
     cy.get("#fecha-consulta").should("have.class", "is-invalid");
   });
+
 
   it("Revisa que clickeando el boton confirmar seleccionando solo la fecha, se muestre en error solo el cuadro de fecha", () => {
     cy.get("#fecha-consulta").type("2024-01-01");

@@ -34,6 +34,7 @@ function obtenerDatos(fechaConsulta) {
     .then((datosObtenidos) => {
       datosJson = datosObtenidos;
     })
+    .then(manejarErrores)
     .catch((error) => console.error(error));
 }
 
@@ -43,8 +44,6 @@ $confirmar.onclick = () => {
   obtenerDatos(fechaConsulta)
     .then(agregarDatos)
     .catch((error) => console.error(error));
-
-  manejarErrores();
 };
 
 function manejarErrores() {
